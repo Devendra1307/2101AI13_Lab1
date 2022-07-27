@@ -50,6 +50,58 @@ void bubbleSort(int arr[], int n)
                 swap(&arr[j], &arr[j + 1]);
 }
 
+void merge(int arr[], int p, int q, int r) {
+
+  int n1 = q - p + 1;
+  int n2 = r - q;
+
+  int A[n1], B[n2];
+
+  for (int i = 0; i < n1; i++)
+    A[i] = arr[p + i];
+  for (int j = 0; j < n2; j++)
+    B[j] = arr[q + 1 + j];
+
+  int i, j, k;
+  i = 0;
+  j = 0;
+  k = p;
+
+  while (i < n1 && j < n2) {
+    if (A[i] <= B[j]) {
+      arr[k] = A[i];
+      i++;
+    } else {
+      arr[k] = B[j];
+      j++;
+    }
+    k++;
+  }
+
+  while (i < n1) {
+    arr[k] = A[i];
+    i++;
+    k++;
+  }
+
+  while (j < n2) {
+    arr[k] = B[j];
+    j++;
+    k++;
+  }
+}
+
+void mergeSort(int arr[], int l, int r) {
+  if (l < r) {    
+    int m = l + (r - l) / 2;
+
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+
+    merge(arr, l, m, r);
+  }
+}
+
 int main()
 {
     printf("Enter the size of array\n");
@@ -80,6 +132,10 @@ int main()
     }
     else if(select==3){
         bubbleSort(a,n);
+        Printarray(a,n);
+    }
+    else if(select==4){
+        mergeSort(a, 0, n- 1);
         Printarray(a,n);
     }
     return  0;
