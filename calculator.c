@@ -16,6 +16,10 @@ int main() {
     case '-':
       printf("%.1lf - %.1lf = %.1lf", a, b, a - b);
       break;
+    case '*':
+      printf("%.1lf * %.1lf = %.1lf", a, b, a * b);
+      break;
+
     
     default:
       printf("Error! operator is not correct");
