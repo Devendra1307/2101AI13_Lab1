@@ -42,6 +42,13 @@ void insertionSort(int arr[], int n)
         arr[j + 1] = temp;
     }
 }
+void bubbleSort(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(&arr[j], &arr[j + 1]);
+}
 
 int main()
 {
@@ -69,6 +76,10 @@ int main()
     }
     else if(select==2){
         insertionSort(a,n);
+        Printarray(a,n);
+    }
+    else if(select==3){
+        bubbleSort(a,n);
         Printarray(a,n);
     }
     return  0;
